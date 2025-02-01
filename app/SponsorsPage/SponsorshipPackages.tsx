@@ -4,21 +4,21 @@ const SponsorshipPackages = () => {
   const plans = [
     {
       number: 1,
-      badge: "BASE",
+      badge: "SILVER",
       podcasts: "5",
       hours1: "+10",
       hours2: "+5k"
     },
     {
       number: 2,
-      badge: "STANDARD",
+      badge: "GOLD",
       podcasts: "10",
       hours1: "+20",
       hours2: "+10k"
     },
     {
       number: 3,
-      badge: "PREMIUM",
+      badge: "PLATINUM",
       podcasts: "15",
       hours1: "+30",
       hours2: "+15k"
@@ -74,7 +74,7 @@ const SponsorshipPackages = () => {
               </div>
               <div className="flex flex-col items-center px-2 sm:px-4">
                 <span className="text-3xl sm:text-5xl md:text-6xl font-light mb-2 sm:mb-3">{plan.hours2}</span>
-                <span className="text-[#9e0cca] text-xs sm:text-sm md:text-base">Hours</span>
+                <span className="text-[#9e0cca] text-xs sm:text-sm md:text-base">Views</span>
               </div>
             </div>
           </div>
