@@ -7,21 +7,24 @@ const SponsorshipPackages = () => {
       badge: "SILVER",
       podcasts: "5",
       hours1: "+10",
-      hours2: "+5k"
+      hours2: "+5k",
+      desc:"Our first plan comes with a comprehensive deal of marketing where you can market your company and gain influence over the market with this"
     },
     {
       number: 2,
       badge: "GOLD",
       podcasts: "10",
       hours1: "+20",
-      hours2: "+10k"
+      hours2: "+10k",
+      desc:"Building upon the Silver Plan, our Gold Plan takes your marketing to the next level. This includes deeper audience targeting and more content "
     },
     {
       number: 3,
       badge: "PLATINUM",
       podcasts: "15",
       hours1: "+30",
-      hours2: "+15k"
+      hours2: "+15k",
+      desc:"Our most powerful plan offers an all-in-one marketing package designed to maximize your brand's reach and impact. It includes everything We have to offer"
     }
   ];
 
@@ -57,8 +60,7 @@ const SponsorshipPackages = () => {
             {/* Description */}
             <div className="mb-8 sm:mb-12 md:mb-16">
               <p className="text-base sm:text-lg md:text-xl text-center text-white/90 leading-relaxed">
-                Our first plan comes with a comprehensive deal of marketing where you can 
-                market your company and gain influence over the market with this
+              {plan.desc}
               </p>
             </div>
 
