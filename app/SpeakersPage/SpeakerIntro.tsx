@@ -24,11 +24,7 @@ const SpeakerIntro= () => {
           <p className="text-sm md:text-base leading-relaxed text-gray-300">
             This podcast offers you an insight about the host Abdullah and his
             struggles to achieve what is now by measures the most immaculate
-            form of success. This podcast offers you an insight about the host
-            Abdullah and his struggles to achieve what is now by measures the
-            most immaculate form of success. This podcast offers you an insight
-            about the host Abdullah and his struggles to achieve what is now by
-            measures the most immaculate form of success.
+            form of success. Join Abdullah Ghaffar as he engages with the brightest minds in the real estate industry! Discover actionable tips, inspiring stories, and insider knowledge from top performers and experts in real estate investing and raising capital.
           </p>
         </div>
       </div>
