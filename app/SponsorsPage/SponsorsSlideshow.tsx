@@ -16,7 +16,7 @@ const slides: Slide[] = [
   { id: "01", collaborator: "SOMEONE", imageUrl: "/Podcast1.jpg" },
   { id: "02", collaborator: "SOMEONE", imageUrl: "/Podcast2.jpg" },
   { id: "03", collaborator: "SOMEONE", imageUrl: "/Podcast3.jpg" },
-  { id: "04", collaborator: "SOMEONE", imageUrl: "/Podcast4.jpg" },
+  { id: "04", collaborator: "SOMEONE", imageUrl: "/Podcast6.jpg" }, //choose better image
   { id: "05", collaborator: "SOMEONE", imageUrl: "/Podcast5.jpg" },
   { id: "06", collaborator: "SOMEONE", imageUrl: "/Podcast6.jpg" },
 ];
@@ -93,7 +93,7 @@ const SponsorsSlideshow: React.FC<SlideshowProps> = ({
               <img
                 src={slide.imageUrl}
                 alt={`Collaboration with ${slide.collaborator}`}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-fit"
                 loading="lazy"
               />
               {/* Collaboration Text */}

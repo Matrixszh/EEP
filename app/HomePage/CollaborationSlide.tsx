@@ -92,7 +92,7 @@ const CollaborationsSlide: React.FC = () => {
                     <Image
                       src={slide.image}
                       alt={`${slide.name1} X ${slide.name2}`}
-                      className="object-cover"
+                      className="object-fit"
                       fill
                     />
                   </div>
