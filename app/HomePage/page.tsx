@@ -10,8 +10,8 @@ import PlansSection from "./PlansSection";
 
 const HomePage = () => {
   const { video, title } = heroData.home;
-  const images1 = ["/snip1.png", "/snip2.png"];
-  const images2 = ["/snip2.png", "/snip1.png"];
+  const images1 = ["/P12.png", "/P13.png"];
+  const images2 = ["/P13.png", "/P12.png"];
 
   return (
     <div className="">
