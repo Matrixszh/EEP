@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useState, useEffect, useRef } from "react";
 
 interface Slide {
@@ -49,10 +48,9 @@ const SponsorsSlideshow: React.FC<SlideshowProps> = ({
   }, [autoPlayInterval]);
 
   return (
-    <div className="w-full max-w-6xl mx-auto p-4 sm:p-6 md:p-8">
-    <div className="w-full max-w-6xl mx-auto p-4 sm:p-6 md:p-8">
-            {/* Marquee Section */}
-      
+    <div className="w-full mx-auto p-4 sm:p-6 md:p-8">
+      {/* Marquee Section */}
+      <div className="overflow-hidden bg-transparent py-14 sm:py-14 md:py-16 lg:py-20">
         <div className="flex animate-marquee whitespace-nowrap">
           {Array(20)
             .fill(0)
@@ -68,13 +66,18 @@ const SponsorsSlideshow: React.FC<SlideshowProps> = ({
             ))}
         </div>
       </div>
+
       {/* Slideshow Container */}
       <div className="relative w-full aspect-[4/3] sm:aspect-[16/9] overflow-hidden rounded-lg shadow-lg bg-gray-900">
         {slides.map((slide, index) => (
           <div
             key={slide.id}
             className={`absolute inset-0 flex items-center justify-center transition-opacity duration-500 ease-in-out 
-            ${currentSlide === index ? "opacity-100" : "opacity-0 pointer-events-none"}`}
+            ${
+              currentSlide === index
+                ? "opacity-100"
+                : "opacity-0 pointer-events-none"
+            }`}
           >
             <img
               src={slide.imageUrl}
@@ -83,7 +86,8 @@ const SponsorsSlideshow: React.FC<SlideshowProps> = ({
               loading="lazy"
             />
             <h2 className="absolute inset-x-0 top-1/2 -translate-y-1/2 text-center text-white text-xs sm:text-sm md:text-xl lg:text-2xl font-semibold tracking-tighter bg-black/60 px-4 py-2">
-              ABDULLAH <span className="text-[#9e0cca]">X</span> {slide.collaborator}
+              ABDULLAH <span className="text-[#9e0cca]">X</span>{" "}
+              {slide.collaborator}
             </h2>
           </div>
         ))}
@@ -96,13 +100,16 @@ const SponsorsSlideshow: React.FC<SlideshowProps> = ({
             key={idx}
             onClick={() => handleSlideChange(idx)}
             className={`w-2 h-2 rounded-full transition-all duration-300 
-            ${currentSlide === idx ? "bg-[#9e0cca] w-3 h-3" : "bg-gray-500 hover:bg-gray-400"}`}
+            ${
+              currentSlide === idx
+                ? "bg-[#9e0cca] w-3 h-3"
+                : "bg-gray-500 hover:bg-gray-400"
+            }`}
           />
         ))}
       </div>
     </div>
   );
 };
-
 
 export default SponsorsSlideshow;
