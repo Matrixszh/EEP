@@ -27,34 +27,32 @@ const SponsorsSlideshow: React.FC<SlideshowProps> = ({
   const [currentSlide, setCurrentSlide] = useState<number>(0);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Function to start the auto-play interval
   const startAutoPlay = () => {
-    stopAutoPlay(); // Clear any existing interval
+    stopAutoPlay();
     intervalRef.current = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
     }, autoPlayInterval);
   };
 
-  // Function to stop the auto-play interval
   const stopAutoPlay = () => {
     if (intervalRef.current) clearInterval(intervalRef.current);
   };
 
-  // Manual Slide Change Handler
   const handleSlideChange = (index: number) => {
     setCurrentSlide(index);
-    startAutoPlay(); // Restart the auto-play timer after a manual change
+    startAutoPlay();
   };
 
   useEffect(() => {
-    startAutoPlay(); // Start auto-play on component mount
-    return stopAutoPlay; // Cleanup on component unmount
+    startAutoPlay();
+    return stopAutoPlay;
   }, [autoPlayInterval]);
 
   return (
-    <div>
-      {/* Marquee Section */}
-      <div className="overflow-hidden bg-transparent py-14 sm:py-14 md:py-16 lg:py-20">
+    <div className="w-full max-w-6xl mx-auto p-4 sm:p-6 md:p-8">
+    <div className="w-full max-w-6xl mx-auto p-4 sm:p-6 md:p-8">
+            {/* Marquee Section */}
+      
         <div className="flex animate-marquee whitespace-nowrap">
           {Array(20)
             .fill(0)
@@ -70,63 +68,41 @@ const SponsorsSlideshow: React.FC<SlideshowProps> = ({
             ))}
         </div>
       </div>
+      {/* Slideshow Container */}
+      <div className="relative w-full aspect-[4/3] sm:aspect-[16/9] overflow-hidden rounded-lg shadow-lg bg-gray-900">
+        {slides.map((slide, index) => (
+          <div
+            key={slide.id}
+            className={`absolute inset-0 flex items-center justify-center transition-opacity duration-500 ease-in-out 
+            ${currentSlide === index ? "opacity-100" : "opacity-0 pointer-events-none"}`}
+          >
+            <img
+              src={slide.imageUrl}
+              alt={`Collaboration with ${slide.collaborator}`}
+              className="w-full h-full object-cover rounded-lg"
+              loading="lazy"
+            />
+            <h2 className="absolute inset-x-0 top-1/2 -translate-y-1/2 text-center text-white text-xs sm:text-sm md:text-xl lg:text-2xl font-semibold tracking-tighter bg-black/60 px-4 py-2">
+              ABDULLAH <span className="text-[#9e0cca]">X</span> {slide.collaborator}
+            </h2>
+          </div>
+        ))}
+      </div>
 
-      {/* Slideshow Section */}
-      <div className="relative w-full h-[400px] sm:h-[500px] lg:h-[600px] bg-transparent overflow-hidden">
-        <div
-          className="relative h-full"
-          aria-live="polite"
-          role="region"
-          aria-label="Sponsors Slideshow"
-        >
-          {slides.map((slide, index) => (
-            <div
-              key={slide.id}
-              className={`absolute inset-0 flex items-center justify-center transition-opacity duration-700
-              ${
-                currentSlide === index
-                  ? "opacity-100"
-                  : "opacity-0 pointer-events-none"
-              }`}
-            >
-              {/* Slide Image */}
-              <img
-                src={slide.imageUrl}
-                alt={`Collaboration with ${slide.collaborator}`}
-                className="w-full h-full object-fit"
-                loading="lazy"
-              />
-              {/* Collaboration Text */}
-              <h2 className="absolute inset-x-0 top-1/2 -translate-y-1/2 text-center text-white text-sm sm:text-sm md:text-2xl lg:text-4xl font-extrabold tracking-wider px-2 py-2 rounded-md z-20 pointer-events-none">
-                ABDULLAH <span className="text-[#9e0cca]">X</span>{" "}
-                {slide.collaborator}
-              </h2>
-            </div>
-          ))}
-        </div>
-
-        {/* Tracking Numbers on the Left */}
-        <nav className="absolute left-2 top-1/2 -translate-y-1/2 z-30 space-y-6">
-          {slides.map((_, idx) => (
-            <button
-              key={idx}
-              onClick={() => handleSlideChange(idx)}
-              className={`transition-colors duration-300 flex items-center p-2 rounded-full bg-black/50
-        ${
-          currentSlide === idx
-            ? "text-[#9e0cca]"
-            : "text-white hover:text-[#9e0cca]"
-        }`}
-            >
-              <span className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold font-mono">
-                {String(idx + 1).padStart(2, "0")}
-              </span>
-            </button>
-          ))}
-        </nav>
+      {/* Navigation Dots */}
+      <div className="flex justify-center space-x-3 mt-4">
+        {slides.map((_, idx) => (
+          <button
+            key={idx}
+            onClick={() => handleSlideChange(idx)}
+            className={`w-2 h-2 rounded-full transition-all duration-300 
+            ${currentSlide === idx ? "bg-[#9e0cca] w-3 h-3" : "bg-gray-500 hover:bg-gray-400"}`}
+          />
+        ))}
       </div>
     </div>
   );
 };
+
 
 export default SponsorsSlideshow;
